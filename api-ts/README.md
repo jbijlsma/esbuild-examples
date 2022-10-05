@@ -7,6 +7,6 @@ Simple example of using esbuild for an express nodejs app.
 ```bash
 npm install
 npm run build
-node ./dist/index.js
+npm start
 curl http://localhost:5001
 ```
