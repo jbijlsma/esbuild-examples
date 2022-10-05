@@ -1,0 +1,25 @@
+{
+  "name": "aws-sam-test",
+  "version": "1.0.0",
+  "description": "Check to see if we can do a manual esbuild by following this aws example:",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "./scripts/build.js && mkdir -p ./dist && mv ./.index.js ./dist/index.js",
+    "publish": "./scripts/publish.sh",
+    "deploy": "./scripts/deploy.sh",
+    "uninstall": "rm pnpm-lock.yaml && rm -rf node_modules",
+    "clean": "rm -rf ./dist ./publish"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@middy/core": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.106",
+    "esbuild": "^0.15.10",
+    "esbuild-plugin-ts-references": "^0.2.0"
+  }
+}
