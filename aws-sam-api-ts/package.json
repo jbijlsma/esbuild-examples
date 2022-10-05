@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build": "sam build",
+    "deploy": "npm run build && sam deploy"
+  }
+}
