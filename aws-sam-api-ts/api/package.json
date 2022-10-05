@@ -7,7 +7,11 @@
     "unit": "jest",
     "lint": "eslint '*.ts' --quiet --fix",
     "compile": "tsc",
-    "test": "npm run compile && npm run unit"
+    "test": "npm run compile && npm run unit",
+    "build": "sam build",
+    "deploy": "npm run build && sam deploy",
+    "uninstall": "rm -rf node_modules",
+    "clean": "rm -rf .aws-sam"
   },
   "author": "",
   "license": "ISC",
