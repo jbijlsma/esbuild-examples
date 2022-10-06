@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "build": "pnpm --stream -r run build",
-    "deploy": "pnpm --stream -r run deploy",
-    "uninstall": "rm pnpm-lock.yaml && rm -rf node_modules && pnpm -r run uninstall",
-    "clean": "pnpm --stream -r run clean"
-  }
-}

@@ -1,0 +1,19 @@
+{
+  "name": "@myscope/messages-package",
+  "version": "1.0.0",
+  "description": "Messages package",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm -rf lib tsconfig.tsbuildinfo"
+  },
+  "dependencies": {
+    "fast-csv": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.0"
+  }
+}

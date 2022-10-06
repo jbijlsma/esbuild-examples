@@ -1,6 +1,8 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from "aws-lambda";
 import middy from "@middy/core";
 
+import { getHelloMsg } from "@myscope/messages-package";
+
 export const lambdaHandler = async (
   event: APIGatewayEvent,
   context: Context
@@ -10,7 +12,7 @@ export const lambdaHandler = async (
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "hello world again",
+      message: getHelloMsg(),
     }),
   };
 };

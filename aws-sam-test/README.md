@@ -44,3 +44,33 @@ In short it works like this:
 1. build executes ./scripts/build.js which uses esbuild to create a bundle that excludes packages in the dependencies and devDependencies sections. Note that it creates a bundle in the root directory (.index.js). If you specify ./dist/index.js the require() paths for the non-bundled dependencies point to ../node_modules which should be ./node_modules. It might be possible to fix, but I haven't found any way until now.
 
 2. publish gathers all the assets that aws sam needs and generates a zip file for them that can be uploaded. The zip file contains: the generated bundle (./dist/index.js) and a node_modules folder with only the prod dependencies (generated with pnpm -P). Actually the package.json file is copied to the publish directory and pnpm i -P is run in ./publish to prevent issues with lock-files.
+
+I had to include the node_modules in the bundle.
+
+```
+external: ["./node_modules/*"],
+```
+
+# Further reading
+
+https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html
+
+https://aws.amazon.com/blogs/compute/using-node-js-es-modules-and-top-level-await-in-aws-lambda/
+
+https://github.com/evanw/esbuild/issues/1944
+
+```
+{
+    entryPoints: ['./ulid.js'],
+    bundle: true,
+    platform: 'node',
+    format: 'esm',
+    outfile: './ulid.bundle.mjs',
+    banner: {
+        js: [
+            `import { createRequire as topLevelCreateRequire } from 'module'`,
+            `const require = topLevelCreateRequire(import.meta.url)`
+        ].join('\n')
+    }
+}
+```
