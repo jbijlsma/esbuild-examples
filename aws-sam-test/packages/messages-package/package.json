@@ -8,10 +8,11 @@
   },
   "license": "ISC",
   "scripts": {
+    "uninstall": "rm -rf node_modules",
     "clean": "rm -rf lib tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "fast-csv": "^4.3.6"
+    "csv": "^6.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.8.0"

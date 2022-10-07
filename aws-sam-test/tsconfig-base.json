@@ -3,10 +3,13 @@
     "declaration": true,
     "declarationMap": true,
     "target": "es2020",
-    "module": "commonjs",
+    "module": "es2020",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "composite": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
     "baseUrl": ".", // This must be specified if "paths" is.
     "paths": {
       "packages/*": ["packages/*"]

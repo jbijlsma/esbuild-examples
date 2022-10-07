@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "aws-sam-test"
+s3_bucket = "dnw-templates-2022"
+s3_prefix = "aws-sam-test"
+region = "ap-southeast-1"
+confirm_changeset = false
+capabilities = "CAPABILITY_IAM"
+disable_rollback = false
+image_repositories = []

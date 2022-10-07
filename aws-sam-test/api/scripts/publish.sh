@@ -18,6 +18,5 @@ yarn install --prod
 cd ..
 cp ./dist/* ./publish
 
-# Create zip file
-cd ./publish
-zip -r index.zip *
+# Copy resources to ./publish
+cp ./resources/* ./publish

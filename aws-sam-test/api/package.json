@@ -9,6 +9,8 @@
     "build": "./scripts/build.js && mkdir -p ./dist && mv ./.index.mjs ./dist/index.mjs",
     "publish": "./scripts/publish.sh",
     "deploy": "npm run publish && ./scripts/deploy.sh",
+    "sam-publish": "./scripts/sam-publish.sh",
+    "sam-deploy": "./scripts/sam-deploy.sh",
     "uninstall": "rm -rf node_modules",
     "clean": "rm -rf ./dist ./publish",
     "copy-package-json": "./scripts/copy-package-json.js"
@@ -16,11 +18,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@middy/core": "^3.5.0"
+    "@middy/core": "^3.5.0",
+    "csv": "^6.2.0"
   },
   "devDependencies": {
     "@myscope/messages-package": "workspace:*",
     "@types/aws-lambda": "^8.10.106",
+    "@types/node": "^18.7.23",
     "esbuild": "^0.15.10",
     "esbuild-plugin-ts-references": "^0.2.0"
   }

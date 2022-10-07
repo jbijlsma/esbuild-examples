@@ -10,24 +10,28 @@ importers:
       '@middy/core': ^3.5.0
       '@myscope/messages-package': workspace:*
       '@types/aws-lambda': ^8.10.106
+      '@types/node': ^18.7.23
+      csv: ^6.2.0
       esbuild: ^0.15.10
       esbuild-plugin-ts-references: ^0.2.0
     dependencies:
       '@middy/core': 3.5.0
+      csv: 6.2.0
     devDependencies:
       '@myscope/messages-package': link:../packages/messages-package
       '@types/aws-lambda': 8.10.106
+      '@types/node': 18.8.3
       esbuild: 0.15.10
       esbuild-plugin-ts-references: 0.2.0
 
   packages/messages-package:
     specifiers:
       '@types/node': ^18.8.0
-      fast-csv: ^4.3.6
+      csv: ^6.2.0
     dependencies:
-      fast-csv: 4.3.6
+      csv: 6.2.0
     devDependencies:
-      '@types/node': 18.8.2
+      '@types/node': 18.8.3
 
 packages:
 
@@ -49,29 +53,6 @@ packages:
     dev: true
     optional: true
 
-  /@fast-csv/format/4.3.5:
-    resolution: {integrity: sha512-8iRn6QF3I8Ak78lNAa+Gdl5MJJBM5vRHivFtMRUWINdevNo00K7OXxS2PshawLKTejVwieIlPmK5YlLu6w4u8A==}
-    dependencies:
-      '@types/node': 14.18.31
-      lodash.escaperegexp: 4.1.2
-      lodash.isboolean: 3.0.3
-      lodash.isequal: 4.5.0
-      lodash.isfunction: 3.0.9
-      lodash.isnil: 4.0.0
-    dev: false
-
-  /@fast-csv/parse/4.3.6:
-    resolution: {integrity: sha512-uRsLYksqpbDmWaSmzvJcuApSEe38+6NQZBUsuAyMZKqHxH0g1wcJgsKUvN3WC8tewaqFjBMMGrkHmC+T7k8LvA==}
-    dependencies:
-      '@types/node': 14.18.31
-      lodash.escaperegexp: 4.1.2
-      lodash.groupby: 4.6.0
-      lodash.isfunction: 3.0.9
-      lodash.isnil: 4.0.0
-      lodash.isundefined: 3.0.1
-      lodash.uniq: 4.5.0
-    dev: false
-
   /@middy/core/3.5.0:
     resolution: {integrity: sha512-IPX68ruFLNsnX1bRLEsNKcJzY30dCuQJl70GxHlkJJrGb0QJq3beHlt3p+fdIwke1YSX4aBrs3dCACwZ5VoSIw==}
     engines: {node: '>=14'}
@@ -81,13 +62,31 @@ packages:
     resolution: {integrity: sha512-yzgMaql7aW1by1XuhKhovuhLyK/1A60lapFXDXXBeHmoyRGQFO2T8lkL3g8hAhHoW5PEvqPJFWPd8jvXiRnxeQ==}
     dev: true
 
-  /@types/node/14.18.31:
-    resolution: {integrity: sha512-vQAnaReSQkEDa8uwAyQby8bYGKu84R/deEc6mg5T8fX6gzCn8QW6rziSgsti1fNvsrswKUKPnVTi7uoB+u62Mw==}
+  /@types/node/18.8.3:
+    resolution: {integrity: sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w==}
+    dev: true
+
+  /csv-generate/4.2.0:
+    resolution: {integrity: sha512-zlIESlGQaYqIhNYwBN2pj5KXNMYbAXZYMOgNoVSoYV8MQyGZwcNWX+kx5LHxocp+zQDqzSgeKh+e+AZs+nCq4Q==}
     dev: false
 
-  /@types/node/18.8.2:
-    resolution: {integrity: sha512-cRMwIgdDN43GO4xMWAfJAecYn8wV4JbsOGHNfNUIDiuYkUYAR5ec4Rj7IO2SAhFPEfpPtLtUTbbny/TCT7aDwA==}
-    dev: true
+  /csv-parse/5.3.0:
+    resolution: {integrity: sha512-UXJCGwvJ2fep39purtAn27OUYmxB1JQto+zhZ4QlJpzsirtSFbzLvip1aIgziqNdZp/TptvsKEV5BZSxe10/DQ==}
+    dev: false
+
+  /csv-stringify/6.2.0:
+    resolution: {integrity: sha512-dcUbQLRTTDcgQxgEU8V9IctkaCwHZjZfzUZ5ZB3RY8Y+pXtdtl5iVQHfGzANytFFkRKanYzBXrkfpNdGR7eviA==}
+    dev: false
+
+  /csv/6.2.0:
+    resolution: {integrity: sha512-yT7dkCsJLJ36NUW0d0ei7parOcUCx/QVkK77puwA/rF4bMciTB5Kf+wuegL+7zh8s6revFM+BFQ2h+U2k4jgBQ==}
+    engines: {node: '>= 0.1.90'}
+    dependencies:
+      csv-generate: 4.2.0
+      csv-parse: 5.3.0
+      csv-stringify: 6.2.0
+      stream-transform: 3.2.0
+    dev: false
 
   /esbuild-android-64/0.15.10:
     resolution: {integrity: sha512-UI7krF8OYO1N7JYTgLT9ML5j4+45ra3amLZKx7LO3lmLt1Ibn8t3aZbX5Pu4BjWiqDuJ3m/hsvhPhK/5Y/YpnA==}
@@ -303,42 +302,6 @@ packages:
       esbuild-windows-arm64: 0.15.10
     dev: true
 
-  /fast-csv/4.3.6:
-    resolution: {integrity: sha512-2RNSpuwwsJGP0frGsOmTb9oUF+VkFSM4SyLTDgwf2ciHWTarN0lQTC+F2f/t5J9QjW+c65VFIAAu85GsvMIusw==}
-    engines: {node: '>=10.0.0'}
-    dependencies:
-      '@fast-csv/format': 4.3.5
-      '@fast-csv/parse': 4.3.6
-    dev: false
-
-  /lodash.escaperegexp/4.1.2:
-    resolution: {integrity: sha512-TM9YBvyC84ZxE3rgfefxUWiQKLilstD6k7PTGt6wfbtXF8ixIJLOL3VYyV/z+ZiPLsVxAsKAFVwWlWeb2Y8Yyw==}
-    dev: false
-
-  /lodash.groupby/4.6.0:
-    resolution: {integrity: sha512-5dcWxm23+VAoz+awKmBaiBvzox8+RqMgFhi7UvX9DHZr2HdxHXM/Wrf8cfKpsW37RNrvtPn6hSwNqurSILbmJw==}
-    dev: false
-
-  /lodash.isboolean/3.0.3:
-    resolution: {integrity: sha512-Bz5mupy2SVbPHURB98VAcw+aHh4vRV5IPNhILUCsOzRmsTmSQ17jIuqopAentWoehktxGd9e/hbIXq980/1QJg==}
-    dev: false
-
-  /lodash.isequal/4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: false
-
-  /lodash.isfunction/3.0.9:
-    resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}
-    dev: false
-
-  /lodash.isnil/4.0.0:
-    resolution: {integrity: sha512-up2Mzq3545mwVnMhTDMdfoG1OurpA/s5t88JmQX809eH3C8491iu2sfKhTfhQtKY78oPNhiaHJUpT/dUDAAtng==}
-    dev: false
-
-  /lodash.isundefined/3.0.1:
-    resolution: {integrity: sha512-MXB1is3s899/cD8jheYYE2V9qTHwKvt+npCwpD+1Sxm3Q3cECXCiYHjeHWXNwr6Q0SOBPrYUDxendrO6goVTEA==}
-    dev: false
-
-  /lodash.uniq/4.5.0:
-    resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
+  /stream-transform/3.2.0:
+    resolution: {integrity: sha512-M22v88wNknyJiIyHYoiIYI5RPl/R7tkf92j1YNkmrbe5XRGHW0jW8n458j1njOrR4Edcj8bwbpSV0iLIWon1hg==}
     dev: false
