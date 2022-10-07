@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  verdaccio-aws-sam
+
+  Sample SAM Template for verdaccio-aws-sam
+Resources:
+  ApiFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: "verdaccio-aws-sam"
+      CodeUri: publish/
+      Handler: index.lambdaHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 256
+      Timeout: 10
+      Policies:
+        - AWSLambda_FullAccess
+      Events:
+        ProxyResource:
+          Type: HttpApi
+          Properties:
+            Path: /{name}
+            Method: any
+
+Outputs:
+  ApiUrl:
+    Description: "API endpoint URL for Prod environment"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/"

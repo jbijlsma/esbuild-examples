@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "pnpm --stream -r run build",
+    "publish": "pnpm --stream -r run publish",
+    "deploy": "pnpm --stream -r run deploy",
+    "sam-publish": "pnpm --stream -r run sam-publish",
+    "sam-deploy": "pnpm --stream -r run sam-deploy",
+    "uninstall": "rm pnpm-lock.yaml && rm -rf node_modules && pnpm --stream -r run uninstall",
+    "clean": "pnpm --stream -r run clean"
+  }
+}

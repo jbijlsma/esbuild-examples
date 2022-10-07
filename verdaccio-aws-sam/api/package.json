@@ -1,0 +1,28 @@
+{
+  "name": "verdaccio-aws-sam",
+  "version": "1.0.0",
+  "description": "Check to see if we can do a manual esbuild by following this aws example:",
+  "author": "jbijlsma",
+  "license": "ISC",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "./scripts/build.js",
+    "publish": "./scripts/publish.sh",
+    "deploy": "npm run publish && ./scripts/deploy.sh",
+    "sam-publish": "./scripts/sam-publish.sh",
+    "sam-deploy": "./scripts/sam-deploy.sh",
+    "uninstall": "rm -rf node_modules",
+    "clean": "rm -rf ./dist ./publish ./.aws-sam"
+  },
+  "dependencies": {
+    "@dnw/messages-package": "^0.0.5",
+    "@middy/core": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.106",
+    "@types/node": "^18.7.23",
+    "esbuild": "^0.15.10"
+  }
+}
