@@ -12,7 +12,7 @@ npm run copy-package-json
 
 # Add node_modules prod folder to ./publish
 cd ./publish
-yarn install --prod
+npm install --omit dev
 
 # Copy esbuild bundle to ./publish
 cd ..
