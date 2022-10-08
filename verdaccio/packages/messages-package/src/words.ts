@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import * as csv from "csv";
+import * as csv from "csv-parse";
 
 export const getWords = (): Promise<String[]> => {
   return new Promise((resolve, reject) => {

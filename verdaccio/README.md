@@ -7,48 +7,34 @@ Example of using esbuild in combination with verdaccio for publishing local pack
 In one (vscode) terminal window start the local verdaccio registry:
 
 ```bash
-cd ./verdaccio
+cd ./registry
 ./start.sh
 ```
 
-In another (vscode) terminal build and publish the npm package (@dnw/messages-package):
+Open another (vscode) terminal window. In the root folder (verdaccio) install the packages and build for all workspaces:
+
+```bash
+pnpm i
+pnpm run build
+```
+
+To publish a new version of the npm package (@dnw/messages-package):
 
 ```bash
 cd ./packages/messages-package
-rm package-lock
-npm install
-npm run build
 npm publish
 ```
 
-In yet another (vscode) terminal run the consumer (api):
+## The api-ts consumer
 
-Move into the api folder:
-
-```bash
-cd ./api
-```
-
-Reference the correct version of the @dnw/message-package in the package.json:
-
-```json
-"dependencies": {
-  "@dnw/messages-package": "^0.0.5",
-},
-```
-
-And install the dependencies:
+To run the api consumer (./api-ts) of the package:
 
 ```bash
-rm package-lock
-npm install
-npm run build
+cd ./api-ts
 npm start
 ```
 
-This should start express on port 5001.
-
-Lets test the api using curl:
+This should start express on port 5001. Test the api using curl:
 
 ```bash
 curl http://localhost:5001/Jeroen
@@ -58,6 +44,18 @@ It should print something like this in the terminal:
 
 ```bash
 Goede morgen and tot ziens Jeroen. 3 words available
+```
+
+## The aws-sam-api-ts consumer
+
+## Consumer package reference
+
+Remember to reference the correct version of the @dnw/message-package in the package.json of the package consumer:
+
+```json
+"dependencies": {
+  "@dnw/messages-package": "^0.0.5",
+},
 ```
 
 # Good to know

@@ -1,0 +1,33 @@
+{
+  "name": "@dnw/messages-package",
+  "version": "0.0.5",
+  "description": "Messages package",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/index.js",
+    "./dist/index.d.ts",
+    "./dist/words.csv"
+  ],
+  "directories": {
+    "lib": "dist"
+  },
+  "license": "ISC",
+  "scripts": {
+    "build": "npm run clean && ./scripts/build.js && npm run copy-files",
+    "copy-files": "npm run copy-resources && npm run build-types",
+    "build-types": "tsc --emitDeclarationOnly --declaration",
+    "copy-resources": "cp ./resources/* ./dist",
+    "deploy": "npm run build && npm publish",
+    "uninstall": "rm -rf node_modules",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "csv-parse": "5.3.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.10",
+    "@types/node": "^18.8.0"
+  }
+}
