@@ -10,7 +10,7 @@ export const lambdaHandler = async (
   console.log(`Event: ${JSON.stringify(event, null, 2)}`);
   console.log(`Context: ${JSON.stringify(context, null, 2)}`);
 
-  const { name } = event.pathParameters;
+  const { name } = event.pathParameters!;
 
   const words = await getWords();
   const msg = `${getHelloMsg()} and ${getGoodbyeMsg()} ${name}. ${
