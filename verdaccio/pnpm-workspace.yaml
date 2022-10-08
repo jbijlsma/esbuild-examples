@@ -1,4 +1,4 @@
 packages:
-  # - api-ts
+  - api-ts
   - aws-sam-api-ts
   - packages/*
